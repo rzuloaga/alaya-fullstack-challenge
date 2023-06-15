@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Import Components
-import PostListItem from './PostListItem'
+import PostListItem from './PostListItem';
 
 function PostList(props) {
     return (
@@ -16,7 +16,7 @@ function PostList(props) {
                 />
             ))}
         </div>
-    )
+    );
 }
 
 PostList.propTypes = {
@@ -30,6 +30,6 @@ PostList.propTypes = {
         })
     ).isRequired,
     handleDeletePost: PropTypes.func.isRequired,
-}
+};
 
-export default PostList
+export default PostList;

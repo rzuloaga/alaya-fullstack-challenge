@@ -1,39 +1,35 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 // Import Components
-import PostList from '../../components/PostList'
-import PostCreateWidget from '../../components/PostCreateWidget'
+import PostList from '../../components/PostList';
+import PostCreateWidget from '../../components/PostCreateWidget';
 // Import Actions
 import {
     addPostRequest,
     deletePostRequest,
     fetchPosts,
-} from '../../PostActions'
-import Logo from '../../../logo.svg'
+} from '../../state/PostActions';
+import Logo from '../../../logo.svg';
 
 const PostListPage = ({ showAddPost }) => {
-    const dispatch = useDispatch()
-    const posts = useSelector((state) => state.posts.data)
+    const dispatch = useDispatch();
+    const posts = useSelector((state) => state.posts.data);
 
     useEffect(() => {
-        dispatch(fetchPosts())
-    }, [])
+        dispatch(fetchPosts());
+    }, []);
 
     const handleDeletePost = (post) => {
         if (confirm('Do you want to delete this post')) {
             // eslint-disable-line
-            dispatch(deletePostRequest(post))
+            dispatch(deletePostRequest(post));
         }
-    }
+    };
 
     const handleAddPost = (post) => {
-        dispatch(addPostRequest(post))
-    }
-
-    const loggedInUser = {
-        name: 'Ramon',
-    }
+        dispatch(addPostRequest(post));
+    };
 
     return (
         <div className="container">
@@ -64,11 +60,11 @@ const PostListPage = ({ showAddPost }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 PostListPage.propTypes = {
     showAddPost: PropTypes.bool.isRequired,
-}
+};
 
-export default PostListPage
+export default PostListPage;

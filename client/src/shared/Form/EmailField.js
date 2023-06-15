@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import TextField from '@material-ui/core/TextField'
+import React, { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
 
 const EmailField = (label, key) => {
-    const [state, setState] = useState({})
+    const [state, setState] = useState({});
 
     const handleChange = (evt) => {
-        const value = evt.target.value
+        const value = evt.target.value;
         setState({
             ...state,
             [evt.target.name]: value,
-        })
-    }
+        });
+    };
 
     return (
         <TextField
@@ -20,7 +20,7 @@ const EmailField = (label, key) => {
             type="email"
             onChange={handleChange}
         />
-    )
-}
+    );
+};
 
-export default EmailField
+export default EmailField;

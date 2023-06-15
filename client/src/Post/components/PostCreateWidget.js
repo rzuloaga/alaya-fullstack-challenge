@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
-import NameField from './Form/NameField'
+import React, { useState, getState } from 'react';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import NameField from '../../shared/Form/NameField';
+import AuthReducer from '../../Auth/state/AuthReducer';
 // Import Style
 
 const useStyles = makeStyles((theme) => ({
@@ -12,25 +13,25 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
-}))
+}));
 
 const PostCreateWidget = ({ addPost }) => {
-    const [state, setState] = useState({})
-    const classes = useStyles()
+    const [state, setState] = getState({});
+    const classes = useStyles();
 
     const submit = () => {
         if (state.name && state.title && state.content) {
-            addPost(state)
+            addPost(state);
         }
-    }
+    };
 
     const handleChange = (evt) => {
-        const value = evt.target.value
+        const value = evt.target.value;
         setState({
             ...state,
             [evt.target.name]: value,
-        })
-    }
+        });
+    };
 
     return (
         <div className={`${classes.root} d-flex flex-column my-4 w-100`}>
@@ -60,11 +61,11 @@ const PostCreateWidget = ({ addPost }) => {
                 Submit
             </Button>
         </div>
-    )
-}
+    );
+};
 
 PostCreateWidget.propTypes = {
     addPost: PropTypes.func.isRequired,
-}
+};
 
-export default PostCreateWidget
+export default PostCreateWidget;

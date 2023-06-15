@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // Import Actions
-import { fetchPost } from '../../PostActions'
+import { fetchPost } from '../../PostActions';
 // Import Selectors
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 export function PostDetailPage() {
-    const { cuid } = useParams()
+    const { cuid } = useParams();
     const post = useSelector((state) =>
         state.posts.data.find((currentPost) => currentPost.cuid === cuid)
-    )
-    const dispatch = useDispatch()
+    );
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!post) dispatch(fetchPost(cuid))
-    }, [])
+        if (!post) dispatch(fetchPost(cuid));
+    }, []);
 
     return post ? (
         <div className="container">
@@ -28,6 +28,6 @@ export function PostDetailPage() {
         </div>
     ) : (
         <div>Loading</div>
-    )
+    );
 }
-export default PostDetailPage
+export default PostDetailPage;
