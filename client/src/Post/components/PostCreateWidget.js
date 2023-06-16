@@ -1,4 +1,4 @@
-import React, { useState, getState } from 'react';
+import React, { useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostCreateWidget = ({ addPost }) => {
-    const [state, setState] = getState({});
+    const [state, setState] = useState({});
     const classes = useStyles();
 
     const submit = () => {
@@ -32,6 +32,14 @@ const PostCreateWidget = ({ addPost }) => {
             [evt.target.name]: value,
         });
     };
+
+    const user = {
+        name: 'Ramon',
+    };
+
+    if (!user) {
+        return;
+    }
 
     return (
         <div className={`${classes.root} d-flex flex-column my-4 w-100`}>

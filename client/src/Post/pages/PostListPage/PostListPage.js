@@ -12,7 +12,7 @@ import {
 } from '../../state/PostActions';
 import Logo from '../../../logo.svg';
 
-const PostListPage = ({ showAddPost }) => {
+const PostListPage = () => {
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts.data);
 
@@ -21,10 +21,7 @@ const PostListPage = ({ showAddPost }) => {
     }, []);
 
     const handleDeletePost = (post) => {
-        if (confirm('Do you want to delete this post')) {
-            // eslint-disable-line
-            dispatch(deletePostRequest(post));
-        }
+        dispatch(deletePostRequest(post));
     };
 
     const handleAddPost = (post) => {
@@ -47,10 +44,7 @@ const PostListPage = ({ showAddPost }) => {
             <hr />
             <div className="row">
                 <div className="col-6">
-                    <PostCreateWidget
-                        addPost={handleAddPost}
-                        showAddPost={showAddPost}
-                    />
+                    <PostCreateWidget addPost={handleAddPost} />
                 </div>
                 <div className="col-6">
                     <PostList
@@ -61,10 +55,6 @@ const PostListPage = ({ showAddPost }) => {
             </div>
         </div>
     );
-};
-
-PostListPage.propTypes = {
-    showAddPost: PropTypes.bool.isRequired,
 };
 
 export default PostListPage;

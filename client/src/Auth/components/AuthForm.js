@@ -13,18 +13,26 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const LogInForm = () => {
-    const [state, setState] = useState({});
-    const classes = useStyles();
+const AuthForm = () => {
+    let showLogInForm = false;
+    let showSignUpForm = false;
 
-    const submit = () => {
-        if (state.name && state.title && state.content) {
-            addPost(state);
+    const showForm = (type) => {
+        if (type === 'logIn') {
+            showLogInForm = true;
+            showSignUpForm = false;
         }
+        if (type === 'signUp') {
+            showLogInForm = false;
+            showSignUpForm = true;
+        }
+
+        showLogInForm = false;
+        showSignUpForm = false;
     };
 
     return (
-        <div className={`d-flex flex-column my-4 w-100`}>
+        <div className="d-flex flex-column my-4 w-100">
             <h3>Identify yourself</h3>
             <Button
                 className="mt-4"
@@ -46,4 +54,4 @@ const LogInForm = () => {
     );
 };
 
-export default LogInForm;
+export default AuthForm;
